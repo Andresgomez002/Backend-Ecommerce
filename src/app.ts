@@ -28,10 +28,11 @@ app.get( '/home', ( req: Request, res: Response ) => {
 app.use( '/api', routeMain );
 
 /** Resolvemos la promesa: Conexion a Mongo usando Mongoose */
-// db()
-//     .then( () => console.log( `MongoDB se conecto correctamente` ) )
-//     .catch( () => console.log( `MongoDB sufre un problema de conexión` ) );
+db()
+    .then( () => console.log( `MongoDB se conecto correctamente` ) )
+    .catch( () => console.error( `MongoDB sufre un problema de conexión` ) );
 
+// Lanza el servidor web
 app.listen( PORT, () => {
     console.log( `Servidor en http://localhost:${ PORT }` );
 });
