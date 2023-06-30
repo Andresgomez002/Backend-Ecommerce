@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express, { Request, Response } from 'express';
 import routeMain from './routes';
+import db from "./config/mongo.config";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -26,6 +27,10 @@ app.get( '/home', ( req: Request, res: Response ) => {
 // http://localhost:3000/api
 app.use( '/api', routeMain );
 
+/** Resolvemos la promesa: Conexion a Mongo usando Mongoose */
+// db()
+//     .then( () => console.log( `MongoDB se conecto correctamente` ) )
+//     .catch( () => console.log( `MongoDB sufre un problema de conexión` ) );
 
 app.listen( PORT, () => {
     console.log( `Servidor en http://localhost:${ PORT }` );
