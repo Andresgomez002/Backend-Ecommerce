@@ -1,11 +1,15 @@
 /** Archivo central de enrutamiento */
 import { Router, Request, Response } from "express";
-import { getProducts } from "../controllers/product.controller";
+import { createProduct, deleteProduct, getProduct, getProducts, updateProduct } from "../controllers/product.controller";
 
 
 const router = Router();
 // http://localhost:3000/api/products/
 router.get( '/', getProducts );
+router.get( '/', getProduct );
+router.post( '/', createProduct );
+router.put( '/', updateProduct );
+router.delete( '/', deleteProduct );
 
 
 export default router;
