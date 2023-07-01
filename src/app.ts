@@ -24,6 +24,8 @@ app.get( '/home', ( req: Request, res: Response ) => {
 });
 
 /** Implementando Middlewares a Express */
+app.use( express.json() );      // 
+
 // http://localhost:3000/api
 app.use( '/api', routeMain );
 
