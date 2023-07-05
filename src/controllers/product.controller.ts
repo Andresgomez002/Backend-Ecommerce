@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import ProductModel from "../models/products.model";
+import { insertProduct } from "../services/product.service";
 
 
 async function getProducts( req: Request, res: Response ) {
@@ -11,14 +11,12 @@ async function getProduct ( req: Request, res: Response ) {
     res.send( `Obtiene un producto por ID` );
 }
 async function createProduct( req: Request, res: Response ) {
+    console.log( req.body );
 
-    const data = req.body;
+    const data = await insertProduct( req.body );
 
-    const response = await ProductModel.create( data );
-
-    console.log( response );
-    res.json( response );
-
+    console.log( data );
+    res.json( data );
 }
 async function updateProduct( req: Request, res: Response ) {
     console.log( `Actualiza un producto por ID` );
