@@ -2,5 +2,10 @@
 export interface Product {
     name: string;
     price: number;
-    description: string;    
+    image: string;
+    description: string;   
+    quantity: number;
+    ranking: number; 
+    category: string;
+    deliveryDate: Date
 }

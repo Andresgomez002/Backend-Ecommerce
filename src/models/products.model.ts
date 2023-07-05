@@ -14,8 +14,28 @@ const productSchema = new Schema(
             type: Number,
             required: false
         },
+        image: {
+            type: String,
+            required: false
+        },
         description: {
             type: String
+        },
+        quantity: {
+            type: Number,
+            required: true
+        },
+        ranking: {
+            type: Number,
+            default: 0
+        },
+        category: {
+            type: String,
+            default: 'Uncategorized'
+        }, 
+        deliveryDate: {
+            type: Date,
+            default: new Date
         }
     },
     // Definira configuraciones que se pueden aplicar en Mongoose para ese objeto
