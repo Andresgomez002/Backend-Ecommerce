@@ -1,13 +1,16 @@
 import { Request, Response } from "express";
-import { getAllProducts, insertProduct } from "../services/product.service";
+import { getAllProducts, getProductById, insertProduct } from "../services/product.service";
 
 
 async function getProducts( req: Request, res: Response ) {
     try {
-        const response = await getAllProducts();
-        console.log( response );
+        const
+            response = await getAllProducts(),
+            data = response ? response : 'NOT_FOUND';   // Pendiente
 
-        res.json( response );
+        console.log( data );
+
+        res.json( data );
 
     } catch( error ) {
         console.log( `Error en la extracion del listado de productos` );
@@ -17,8 +20,23 @@ async function getProducts( req: Request, res: Response ) {
     }
 }
 async function getProduct ( req: Request, res: Response ) {
-    console.log( `Obtiene un producto por ID` );
-    res.send( `Obtiene un producto por ID` );
+    // Obtengo ID del producto enviado como parametro en la URL
+    const productId = req.params.id;
+
+    try {
+        const response = await getProductById( productId );
+
+        console.log( res )
+        res.json( response );
+
+    } catch ( error ) {
+        console.log( `Error en la extracion del producto con id: ${ productId }` );
+        res.json({
+            msg: 'ERROR_GET_PRODUCT_BY_ID'
+        });
+    }
+
+
 }
 async function createProduct( req: Request, res: Response ) {
     try {
