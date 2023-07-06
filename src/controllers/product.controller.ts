@@ -11,12 +11,17 @@ async function getProduct ( req: Request, res: Response ) {
     res.send( `Obtiene un producto por ID` );
 }
 async function createProduct( req: Request, res: Response ) {
-    console.log( req.body );
+    try {
+        const data = await insertProduct( req.body );
 
-    const data = await insertProduct( req.body );
-
-    console.log( data );
-    res.json( data );
+        console.log( data );
+        res.json( data );
+    } catch ( error ) {
+        console.log( `Error en la insercion del producto` );
+        res.json({
+            msg: 'ERROR_INSERT_PRODUCT'
+        });
+    }
 }
 async function updateProduct( req: Request, res: Response ) {
     console.log( `Actualiza un producto por ID` );
