@@ -68,6 +68,25 @@ async function updateProduct( req: Request, res: Response ) {
         });
     }
 }
+
+async function partialUpdateProduct( req: Request, res: Response ) {
+    // Obtengo ID del producto enviado como parametro en la URL como una desestructuracion
+    const { params: { id } } = req;
+    const { body } = req;    // Si NO se entiende hacerlo de forma convencional
+
+    try {
+        const response = await updateProductById( id, body );
+
+        console.log( response );
+        res.json( response );
+    } catch ( error ) {
+        console.log( `Error en la actualizacion del producto con id: ${ id }` );
+        res.json({
+            msg: 'ERROR_UPDATE_PRODUCT_BY_ID'
+        });
+    }
+}
+
 async function deleteProduct( req: Request, res: Response ) {
     // Obtengo ID del producto enviado como parametro en la URL
     const productId = req.params.id;
@@ -91,5 +110,6 @@ export {
     getProduct,
     createProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    partialUpdateProduct
 };

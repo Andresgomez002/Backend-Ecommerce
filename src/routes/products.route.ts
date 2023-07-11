@@ -1,15 +1,16 @@
 /** Archivo central de enrutamiento */
 import { Router, Request, Response } from "express";
-import { createProduct, deleteProduct, getProduct, getProducts, updateProduct } from "../controllers/product.controller";
+import { createProduct, deleteProduct, getProduct, getProducts, updateProduct, partialUpdateProduct } from "../controllers/product.controller";
 
 
 const router = Router();
 // http://localhost:3000/api/products/
-router.get( '/', getProducts );
-router.get( '/:id', getProduct );
-router.post( '/', createProduct );
-router.put( '/:id', updateProduct );
-router.delete( '/:id', deleteProduct );
+router.get( '/', getProducts );                 // Obtiene lista de TODOS los productos
+router.get( '/:id', getProduct );               // Obtiene producto por ID
+router.post( '/', createProduct );              // Crea producto
+router.put( '/:id', updateProduct );            // Actualiza TODOS los campos del producto
+router.patch( '/:id', partialUpdateProduct );   // Actualiza algunos campos del producto
+router.delete( '/:id', deleteProduct );         // Elimina el producto
 
 
 export default router;

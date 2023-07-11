@@ -1,13 +1,14 @@
 import { Request, Response } from "express";
-import { registerNewUser } from "../services/auth.service";
+import { loginUser, registerNewUser } from "../services/auth.service";
 
 const register = async ( req: Request, res: Response ) => {
     const user = req.body;
     // const { body } = req;
-
+    // TODO: Encriptar contrasenia
     try {
         const response = await registerNewUser( user );
 
+        // TODO: No enviar la propiedad de contrasenia al cliente
         res.json( response );
     } catch (error) {
         console.log( `Error en el registro del usuario` );
@@ -18,9 +19,20 @@ const register = async ( req: Request, res: Response ) => {
     
 }
 
-const login = ( req: Request, res: Response ) => {
-    console.log( 'Login usuario' );
-    res.send( 'Login usuario' );
+const login = async ( req: Request, res: Response ) => {
+    const user = req.body;
+
+    try {
+        const response = await loginUser( user );
+        
+        console.log( response );
+        res.json( response );
+    } catch (error) {
+        console.log( `Error en el acceso del usuario al sistema` );
+        res.json({
+            msg: 'ERROR_LOGIN_USER'
+        });
+    }
 }
 
 export {
