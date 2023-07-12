@@ -1,9 +1,10 @@
 import { Response, Request, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
+import { RequestExtends } from '../interfaces/requestExtends.interface';
 
 
-const authenticationUser = ( req: Request, res: Response, next: NextFunction ) => {
-    
+const authenticationUser = ( req: RequestExtends, res: Response, next: NextFunction ) => {
+    try {
     // 1. Procesando la cadena de autorizacion para extraer el token
     const bearerToken = req.headers.authorization || '';    // bearerToken = Bearer 99999999999
     const arrBearerToken = bearerToken.split( ' ' );        // arrBearerToken [ 'Bearer', '99999999999' ]
@@ -27,10 +28,16 @@ const authenticationUser = ( req: Request, res: Response, next: NextFunction ) =
     // }
     const { userId, rol, name } = payload as { userId: string, rol: string, name: string };
     console.log( userId, rol, name );
+    //Agregamos los valores del token al objeto request de express usando una nueva interface (herencia)
+    req.authUser = {userId, rol, name}
 
+    next(); 
+    } catch (error) {
+        res.json({
+            msg: 'INVALID_AUTHENTICATION'
+        })
+    }
     
-
-    next();
 }
 
 

@@ -4,7 +4,7 @@ import routeMain from './routes/index.route';
 import db from "./config/mongo.config";
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 /** Routing: Enrutamiento */
 // http://localhost:3000/       (EndPoint)
