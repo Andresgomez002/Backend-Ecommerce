@@ -7,5 +7,6 @@ export interface Product {
     quantity: number;
     ranking: number; 
     category: string;
+    userId: number;
     deliveryDate: Date
 }
