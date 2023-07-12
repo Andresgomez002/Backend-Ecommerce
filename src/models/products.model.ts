@@ -33,6 +33,10 @@ const productSchema = new Schema(
             type: String,
             default: 'Uncategorized'
         }, 
+        userID: {
+            type: Number,
+            required: true
+        }, 
         deliveryDate: {
             type: Date,
             default: new Date
