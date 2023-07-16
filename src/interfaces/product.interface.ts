@@ -6,6 +6,6 @@ export interface Product {
     chapters: number;
     ranking: number; 
     category: string;
-    userId: number;
+    userId: string;
     deliveryDate: Date
 }

@@ -5,7 +5,7 @@ async function getChapters( req: Request, res: Response ) {
   try {
     const
         response = await getAllChapters(),
-        data = response ? response : 'NOT_FOUND';   // Pendiente
+        data = response ? response : 'NOT_FOUND';   
 
     console.log( data );
 
@@ -49,7 +49,7 @@ async function createChapter( req: Request, res: Response ) {
 } 
 }
 async function deleteChapterById( req: Request, res: Response ) {
-  // Obtengo ID del producto enviado como parametro en la URL
+
   const chapterId = req.params.id;
 
   try {

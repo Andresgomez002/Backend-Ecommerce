@@ -10,6 +10,10 @@ const chapterSchema = new Schema(
         mangaId: {
             type: String,
             required: false
+        },
+        pages: {
+            type: String,
+            required: false
         }
     },
 
