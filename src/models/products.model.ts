@@ -10,18 +10,15 @@ const productSchema = new Schema(
             type: String,
             required: true
         },
-        price: {
-            type: Number,
-            required: false
-        },
         image: {
             type: String,
-            required: false
+            required: true
         },
         description: {
-            type: String
+            type: String,
+            required: true
         },
-        quantity: {
+        chapters: {
             type: Number,
             required: true
         },
@@ -34,8 +31,8 @@ const productSchema = new Schema(
             default: 'Uncategorized'
         }, 
         userID: {
-            type: Number,
-            required: true
+            type: String,
+            required: false
         }, 
         deliveryDate: {
             type: Date,

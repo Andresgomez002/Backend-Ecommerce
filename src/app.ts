@@ -4,7 +4,7 @@ import routeMain from './routes/index.route';
 import db from "./config/mongo.config";
 
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3005;
 
 /** Routing: Enrutamiento */
 // http://localhost:3000/       (EndPoint)
@@ -17,7 +17,7 @@ app.get( '/', ( req: Request, res: Response ) => {
 
 // http://localhost:3000/home   (EndPoint)
 app.get( '/home', ( req: Request, res: Response ) => {
-    const namePage : string = 'Home';
+    const namePage : string = 'home';
 
     console.log( namePage );
     res.send( `<h1>${ namePage }</h1>` );
