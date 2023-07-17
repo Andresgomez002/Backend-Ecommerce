@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getAllNotice, getNoticeById, insertNotice, removeNoticeById } from "../services/notice.service";
+import { getAllNotice, getNoticeById, insertNotice, removeNoticeById, updateNoticeById } from "../services/notice.service";
 
 async function getNotices( req: Request, res: Response ) {
     try {
@@ -66,10 +66,28 @@ async function createNotices( req: Request, res: Response ) {
         });
     }
   }
+  async function updateNotice( req: Request, res: Response ) {
+    const { params: { id } } = req;
+    const { body } = req;    
+  
+    try {
+        const response = await updateNoticeById( id, body );
+  
+        console.log( response );
+        res.json( response );
+    } catch ( error ) {
+        console.log( `Error en la actualizacion de la noticia con id: ${ id }` );
+        res.json({
+            msg: 'ERROR_UPDATE_NOTICE_BY_ID'
+        });
+    }
+  }
+  
 export{
     getNotices,
     createNotices,
     getNoticeId,
-    deleteNoticeById
+    deleteNoticeById,
+    updateNotice
 
 }

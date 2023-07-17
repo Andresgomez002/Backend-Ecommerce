@@ -16,9 +16,17 @@ const getNoticeById = async ( noticeId: string ) => {
 const removeNoticeById = async ( noticeId: string ) => {
     return await NoticeModel.findOneAndRemove({ _id: noticeId });
 }
+const updateNoticeById = async ( noticeId: string, updateNotice: Notice ) => {
+    return await NoticeModel.findOneAndUpdate( 
+        { _id: noticeId },    
+        updateNotice,          
+        { new: true }           
+    );
+}
 export{
     insertNotice,
     getAllNotice,
     getNoticeById,
-    removeNoticeById
+    removeNoticeById,
+    updateNoticeById
 }
