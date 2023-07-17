@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getAllNotice, insertNotice } from "../services/notice.service";
+import { getAllNotice, getNoticeById, insertNotice, removeNoticeById } from "../services/notice.service";
 
 async function getNotices( req: Request, res: Response ) {
     try {
@@ -31,8 +31,45 @@ async function createNotices( req: Request, res: Response ) {
         });
     }
   }
+  async function getNoticeId ( req: Request, res: Response ) {
+    const noticeId = req.params.id;
+  
+    try {
+        const response = await getNoticeById( noticeId );
+  
+        console.log( res )
+        res.json( response );
+  
+    } catch ( error ) {
+        console.log( `Error en la extracion de la noticia con id: ${ noticeId }` );
+        res.json({
+            msg: 'ERROR_GET_NOTICE_BY_ID'
+        });
+    }
+  
+  
+  }
+  async function deleteNoticeById( req: Request, res: Response ) {
+
+    const noticeId = req.params.id;
+  
+    try {
+        const response = await removeNoticeById( noticeId );
+  
+        console.log( response );
+        res.json( response );
+  
+    } catch ( error ) {
+        console.log( `Error en la eliminacion de la noticia con id: ${ noticeId }` );
+        res.json({
+            msg: 'ERROR_DELETE_NOTICE_BY_ID'
+        });
+    }
+  }
 export{
     getNotices,
-    createNotices
+    createNotices,
+    getNoticeId,
+    deleteNoticeById
 
 }
