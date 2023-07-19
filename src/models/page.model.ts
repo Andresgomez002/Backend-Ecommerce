@@ -7,13 +7,13 @@ const pageSchema = new Schema(
             type: String,
             required: true
         },
-        numeroPage: {
-            type: Number,
+        descripcion: {
+            type: String,
             required: false
         },
         capituloId: {
             type: String,
-            required: false
+            required: true
         }
     },
 

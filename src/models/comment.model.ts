@@ -1,17 +1,17 @@
 
 import { Schema, model } from "mongoose";
 
-const chapterSchema = new Schema(
+const commentSchema = new Schema(
     {
-        titulo: {
+        comentario: {
             type: String,
             required: true
         },
-        mangaId: {
+        userId: {
             type: String,
             required: true
         },
-        pages: {
+        noticeId: {
             type: Number,
             required: true
         }
@@ -22,7 +22,7 @@ const chapterSchema = new Schema(
     }
 );
 
-const ChapterModel = model( 'capitulo', chapterSchema  );
+const commentModel = model( 'comments', commentSchema  );
 
 
-export default ChapterModel;
+export default commentModel;

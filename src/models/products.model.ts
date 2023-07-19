@@ -32,7 +32,7 @@ const productSchema = new Schema(
         }, 
         userID: {
             type: String,
-            required: false
+            required: true
         }, 
         deliveryDate: {
             type: Date,
