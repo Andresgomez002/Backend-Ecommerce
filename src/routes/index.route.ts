@@ -6,6 +6,7 @@ import routeAuth from "./auth.route";
 import routeChapters from "./chapters.route";
 import routesNotices from "./notices.route";
 import  routesPage  from "./page.route";
+import routeComment from "./comments.route";
 const router = Router();
 
 /** Implementando Middlewares a Express */
@@ -15,5 +16,5 @@ router.use( '/auth', routeAuth );           // http://localhost:3000/api/auth
 router.use( '/chapters', routeChapters)     // http://localhost:3000/api/chapters
 router.use( '/notices', routesNotices)     // http://localhost:3000/api/notices
 router.use( '/pages', routesPage)     // http://localhost:3000/api/notices
-
+router.use( '/comments',routeComment )  //htpp://localhost:3000/api/comments
 export default router;
