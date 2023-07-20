@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express, { Request, Response } from 'express';
 import routeMain from './routes/index.route';
 import db from "./config/mongo.config";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 3005;
@@ -25,6 +26,7 @@ app.get( '/home', ( req: Request, res: Response ) => {
 
 /** Implementando Middlewares a Express */
 app.use( express.json() );      // 
+app.use(cors())
 
 // http://localhost:3000/api
 app.use( '/api', routeMain );
