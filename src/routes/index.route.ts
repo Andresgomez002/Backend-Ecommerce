@@ -7,6 +7,7 @@ import routeChapters from "./chapters.route";
 import routesNotices from "./notices.route";
 import  routesPage  from "./page.route";
 import routeComment from "./comments.route";
+import routePlan from "./plan.route";
 const router = Router();
 
 /** Implementando Middlewares a Express */
@@ -17,4 +18,5 @@ router.use( '/chapters', routeChapters)     // http://localhost:3000/api/chapter
 router.use( '/notices', routesNotices)     // http://localhost:3000/api/notices
 router.use( '/pages', routesPage)     // http://localhost:3000/api/notices
 router.use( '/comments',routeComment )  //htpp://localhost:3000/api/comments
+router.use( '/planes',routePlan )
 export default router;

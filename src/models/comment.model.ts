@@ -12,7 +12,7 @@ const commentSchema = new Schema(
             required: true
         },
         noticeId: {
-            type: Number,
+            type: String,
             required: true
         }
     },
